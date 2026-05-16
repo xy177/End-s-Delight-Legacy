@@ -1,6 +1,6 @@
 # End's Delight Legacy / 末地农家乐
 
-![End's Delight Legacy Logo](logo.png)
+![End's Delight Legacy Logo](art/logo_hi.png)
 
 ## Overview
 
