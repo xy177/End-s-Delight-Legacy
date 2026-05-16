@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "ends_delight:chorus_sauce" },
+    { "type": "forge:ore_dict", "ore": "foodRoastedDragonMeat" },
+    { "type": "forge:ore_dict", "ore": "cropTomato" },
+    { "type": "forge:ore_dict", "ore": "endWarpedFungus" },
+    { "type": "forge:ore_dict", "ore": "endCrimsonFungus" },
+    { "item": "minecraft:chorus_fruit" },
+    { "item": "minecraft:bowl" }
+  ],
+  "result": {
+    "item": "ends_delight:roasted_dragon_steak",
+    "count": 1
+  }
+}

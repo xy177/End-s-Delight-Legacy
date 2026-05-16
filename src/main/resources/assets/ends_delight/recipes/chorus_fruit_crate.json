@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:chorus_fruit"
+    }
+  },
+  "result": {
+    "item": "ends_delight:chorus_fruit_crate",
+    "count": 1
+  }
+}

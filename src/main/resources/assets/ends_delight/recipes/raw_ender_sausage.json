@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "type": "forge:ore_dict", "ore": "foodRawDragonMeat" },
+    { "item": "ends_delight:enderman_gristle" },
+    { "item": "ends_delight:chorus_sauce" }
+  ],
+  "result": {
+    "item": "ends_delight:raw_ender_sausage",
+    "count": 2
+  }
+}

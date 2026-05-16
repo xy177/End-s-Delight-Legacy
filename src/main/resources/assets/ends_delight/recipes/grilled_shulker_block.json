@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "353",
+    "412",
+    " 6 "
+  ],
+  "key": {
+    "1": { "item": "ends_delight:roasted_shulker_meat" },
+    "2": { "item": "minecraft:chorus_fruit" },
+    "3": { "item": "ends_delight:chorus_succulent" },
+    "4": { "type": "forge:ore_dict", "ore": "cropTomato" },
+    "5": { "type": "forge:ore_dict", "ore": "cropOnion" },
+    "6": { "item": "minecraft:shulker_shell" }
+  },
+  "result": {
+    "item": "ends_delight:grilled_shulker_block",
+    "count": 1
+  }
+}

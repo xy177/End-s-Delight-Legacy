@@ -1,0 +1,9 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "side": "ends_delight:blocks/end_stove_side",
+    "front": "ends_delight:blocks/end_stove_front_on",
+    "top": "ends_delight:blocks/end_stove_top_on",
+    "bottom": "ends_delight:blocks/end_stove_bottom"
+  }
+}

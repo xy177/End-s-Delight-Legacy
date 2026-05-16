@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:chorus_fruit" },
+    { "item": "ends_delight:chorus_succulent" },
+    { "type": "forge:ore_dict", "ore": "endCrimsonFungus" },
+    { "type": "forge:ore_dict", "ore": "endWarpedFungus" },
+    { "type": "forge:ore_dict", "ore": "cropCabbage" },
+    { "type": "forge:ore_dict", "ore": "cropTomato" },
+    { "item": "minecraft:shulker_shell" }
+  ],
+  "result": {
+    "item": "ends_delight:assorted_salad",
+    "count": 1
+  }
+}

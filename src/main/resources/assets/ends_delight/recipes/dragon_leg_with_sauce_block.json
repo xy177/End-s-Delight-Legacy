@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "010",
+    "232",
+    "454"
+  ],
+  "key": {
+    "0": { "type": "forge:ore_dict", "ore": "cropTomato" },
+    "1": { "item": "ends_delight:chorus_sauce" },
+    "2": { "type": "forge:ore_dict", "ore": "endCrimsonFungus" },
+    "3": { "item": "ends_delight:smoked_dragon_leg" },
+    "4": { "type": "forge:ore_dict", "ore": "endWarpedFungus" },
+    "5": { "item": "minecraft:chorus_fruit" }
+  },
+  "result": {
+    "item": "ends_delight:dragon_leg_with_sauce_block",
+    "count": 1
+  }
+}

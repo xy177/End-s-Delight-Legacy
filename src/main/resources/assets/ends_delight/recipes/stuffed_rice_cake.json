@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:reeds"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "cropChorusFruit"
+    }
+  ],
+  "result": {
+    "item": "ends_delight:stuffed_rice_cake",
+    "count": 2
+  }
+}

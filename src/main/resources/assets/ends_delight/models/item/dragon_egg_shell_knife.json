@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "ends_delight:items/dragon_egg_shell_knife"
+  }
+}

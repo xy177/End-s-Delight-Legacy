@@ -1,0 +1,30 @@
+{
+  "parent": "ends_delight:main/the_end_chef",
+  "display": {
+    "icon": {
+      "item": "ends_delight:bubble_tea"
+    },
+    "title": {
+      "translate": "ends_delight.advancement.get_bubble_tea"
+    },
+    "description": {
+      "translate": "ends_delight.advancement.get_bubble_tea.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bubble_tea": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "ends_delight:bubble_tea"
+          }
+        ]
+      }
+    }
+  }
+}

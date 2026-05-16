@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ends_delight",
+  "name": "End's Delight Legacy",
+  "description": "Legacy Farmer's Delight-style End-themed addon for Minecraft 1.12.2.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["xy177"],
+  "credits": "",
+  "logoFile": "logo.png",
+  "screenshots": [],
+  "dependencies": ["required-after:farmersdelight", "after:futuremc", "after:netherized", "after:nb"]
+}
+]

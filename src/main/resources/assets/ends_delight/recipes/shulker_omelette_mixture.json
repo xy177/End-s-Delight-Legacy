@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "type": "forge:ore_dict", "ore": "listAllEgg" },
+    { "type": "forge:ore_dict", "ore": "foodShulkerMeat" },
+    { "type": "forge:ore_dict", "ore": "cropOnion" }
+  ],
+  "result": {
+    "item": "ends_delight:shulker_omelette_mixture",
+    "count": 1
+  }
+}

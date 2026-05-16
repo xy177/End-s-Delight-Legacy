@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "type": "forge:ore_dict", "ore": "foodRoastedShulkerMeat" },
+    { "type": "forge:ore_dict", "ore": "foodRoastedDragonMeat" },
+    { "item": "minecraft:chorus_fruit" },
+    { "item": "ends_delight:dried_endermite_meat" },
+    { "item": "minecraft:stick" },
+    { "item": "minecraft:stick" },
+    { "item": "minecraft:stick" }
+  ],
+  "result": {
+    "item": "ends_delight:end_barbecue_stick",
+    "count": 3
+  }
+}

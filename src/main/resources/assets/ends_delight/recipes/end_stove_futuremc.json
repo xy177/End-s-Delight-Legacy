@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "futuremc"
+    }
+  ],
+  "pattern": [
+    "111",
+    "2 2",
+    "232"
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:chorus_fruit_popped"
+    },
+    "2": {
+      "item": "minecraft:end_bricks"
+    },
+    "3": {
+      "item": "futuremc:campfire"
+    }
+  },
+  "result": {
+    "item": "ends_delight:end_stove"
+  }
+}

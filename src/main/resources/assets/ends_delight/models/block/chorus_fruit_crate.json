@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "ends_delight:blocks/chorus_fruit_crate_top",
+    "side": "ends_delight:blocks/chorus_fruit_crate_side"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ends_delight:chorus_succulent"
+    }
+  ],
+  "result": {
+    "item": "minecraft:dye",
+    "data": 5,
+    "count": 1
+  }
+}
