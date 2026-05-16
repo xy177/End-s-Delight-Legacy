@@ -43,7 +43,6 @@ The mod adds End-flavored ingredients, meals, drinks, knives, mob drops, placeab
 
 ## Credits
 
-- Port author: `xy177`
 - Original modern-version mod: **End's Delight** by `FoggyHillside`
 - Required base mod: **Farmer's Delight Legacy**
 
