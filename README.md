@@ -41,20 +41,6 @@ The mod adds End-flavored ingredients, meals, drinks, knives, mob drops, placeab
 - Source-style advancements for the main End's Delight progression chain.
 - Compatibility fallbacks for ingredients that do not exist in vanilla Minecraft `1.12.2`.
 
-## Building
-
-Use the included Gradle wrapper:
-
-```bat
-.\gradlew.bat build --no-daemon
-```
-
-The exported jar is generated under:
-
-```text
-build/libs/
-```
-
 ## Credits
 
 - Port author: `xy177`
