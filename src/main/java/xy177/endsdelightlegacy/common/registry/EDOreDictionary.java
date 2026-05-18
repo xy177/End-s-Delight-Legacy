@@ -41,6 +41,10 @@ public final class EDOreDictionary
         OreDictionary.registerOre("toolKnife", new ItemStack(EDItems.PURPUR_KNIFE, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("toolKnife", new ItemStack(EDItems.DRAGON_EGG_SHELL_KNIFE, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("toolKnife", new ItemStack(EDItems.DRAGON_TOOTH_KNIFE, 1, OreDictionary.WILDCARD_VALUE));
+        registerToolKnife(EDItems.END_STONE_MACHETE);
+        registerToolKnife(EDItems.PURPUR_MACHETE);
+        registerToolKnife(EDItems.DRAGON_EGG_SHELL_MACHETE);
+        registerToolKnife(EDItems.DRAGON_TOOTH_MACHETE);
         registerFungusCompat();
         registerBambooCompat();
         registerPastaOrDoughCompat();
@@ -76,6 +80,13 @@ public final class EDOreDictionary
         }
         OreDictionary.registerOre(oreName, new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE));
         return true;
+    }
+
+    private static void registerToolKnife(Item item)
+    {
+        if (item != null) {
+            OreDictionary.registerOre("toolKnife", new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE));
+        }
     }
 
     private static void registerPastaOrDoughCompat()

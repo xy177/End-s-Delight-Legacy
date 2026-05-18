@@ -7,14 +7,15 @@ import com.wdcftgg.farmersdelightlegacy.api.food.FoodItemApi;
 import com.wdcftgg.farmersdelightlegacy.api.food.AddonBowlFoodItem;
 import com.wdcftgg.farmersdelightlegacy.api.food.AddonFoodItem;
 import com.wdcftgg.farmersdelightlegacy.api.food.AddonDrinkItem;
+import com.wdcftgg.farmersdelightlegacy.api.knife.ItemKnifeBase;
 import com.wdcftgg.farmersdelightlegacy.common.item.ItemDrinkableTooltip;
-import com.wdcftgg.farmersdelightlegacy.common.item.ItemKnife;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import xy177.endsdelightlegacy.EndsDelightLegacy;
+import xy177.endsdelightlegacy.common.compat.EDNetherDelightCompat;
 import xy177.endsdelightlegacy.common.item.ItemChorusFlowerTea;
 import xy177.endsdelightlegacy.common.item.ItemChorusFlowerPie;
 import xy177.endsdelightlegacy.common.item.ItemChorusFruitTeleportFood;
@@ -132,12 +133,16 @@ public final class EDItems
     ));
     public static final Item DRIED_CHORUS_FLOWER = registerItem("dried_chorus_flower", new Item());
     public static final Item DRAGON_TOOTH = registerItem("dragon_tooth", new Item());
-    public static final Item END_STONE_KNIFE = registerItem("end_stone_knife", new ItemKnife(EDToolMaterials.END_STONE, 1.5D));
-    public static final Item PURPUR_KNIFE = registerItem("purpur_knife", new ItemKnife(EDToolMaterials.PURPUR, 1.5D));
+    public static final Item END_STONE_KNIFE = registerItem("end_stone_knife", new ItemKnifeBase(EDToolMaterials.END_STONE, 1.5D));
+    public static final Item PURPUR_KNIFE = registerItem("purpur_knife", new ItemKnifeBase(EDToolMaterials.PURPUR, 1.5D));
     public static final Item NON_HATCHABLE_DRAGON_EGG = registerItem("non_hatchable_dragon_egg", new Item());
     public static final Item HALF_DRAGON_EGG_SHELL = registerItem("half_dragon_egg_shell", new Item());
-    public static final Item DRAGON_EGG_SHELL_KNIFE = registerItem("dragon_egg_shell_knife", new ItemKnife(EDToolMaterials.DRAGON_EGG_SHELL, 3.0D));
-    public static final Item DRAGON_TOOTH_KNIFE = registerItem("dragon_tooth_knife", new ItemKnife(EDToolMaterials.DRAGON_TOOTH, 4.0D));
+    public static final Item DRAGON_EGG_SHELL_KNIFE = registerItem("dragon_egg_shell_knife", new ItemKnifeBase(EDToolMaterials.DRAGON_EGG_SHELL, 3.0D));
+    public static final Item DRAGON_TOOTH_KNIFE = registerItem("dragon_tooth_knife", new ItemKnifeBase(EDToolMaterials.DRAGON_TOOTH, 4.0D));
+    public static Item END_STONE_MACHETE;
+    public static Item PURPUR_MACHETE;
+    public static Item DRAGON_EGG_SHELL_MACHETE;
+    public static Item DRAGON_TOOTH_MACHETE;
     public static final Item LIQUID_DRAGON_EGG = registerItem("liquid_dragon_egg", new ItemLiquidDragonEgg(
         FoodItemApi.FoodItemSettings.builder()
             .nutrition(14)
@@ -424,13 +429,34 @@ public final class EDItems
     public static void register(IForgeRegistry<Item> registry)
     {
         EDToolMaterials.initRepairItems();
+        registerNetherDelightCompatItems();
         for (Item item : ITEMS) {
             registry.register(item);
         }
     }
 
+    private static void registerNetherDelightCompatItems()
+    {
+        if (!EDNetherDelightCompat.isLoaded()) {
+            return;
+        }
+        END_STONE_MACHETE = registerMachete("end_stone_machete", EDToolMaterials.END_STONE);
+        PURPUR_MACHETE = registerMachete("purpur_machete", EDToolMaterials.PURPUR);
+        DRAGON_EGG_SHELL_MACHETE = registerMachete("dragon_egg_shell_machete", EDToolMaterials.DRAGON_EGG_SHELL);
+        DRAGON_TOOTH_MACHETE = registerMachete("dragon_tooth_machete", EDToolMaterials.DRAGON_TOOTH);
+    }
+
+    private static Item registerMachete(String name, Item.ToolMaterial material)
+    {
+        Item item = EDNetherDelightCompat.createMachete(material);
+        return item == null ? null : registerItem(name, item);
+    }
+
     private static Item registerItem(String name, Item item)
     {
+        if (item == null) {
+            return null;
+        }
         item.setRegistryName(new ResourceLocation(EndsDelightLegacy.MODID, name));
         item.setUnlocalizedName(EndsDelightLegacy.MODID + "." + name);
         item.setCreativeTab(EndsDelightLegacy.CREATIVE_TAB);

@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import xy177.endsdelightlegacy.common.CommonProxy;
 import xy177.endsdelightlegacy.common.registry.EDBlocks;
 import xy177.endsdelightlegacy.common.registry.EDCreativeTab;
+import xy177.endsdelightlegacy.common.registry.EDHuntingDropRegistry;
 import xy177.endsdelightlegacy.common.registry.EDItems;
 import xy177.endsdelightlegacy.common.registry.EDRecipeRegistry;
 import xy177.endsdelightlegacy.common.tile.TileEntityDragonLegFeast;
@@ -35,7 +36,7 @@ public class EndsDelightLegacy
 {
     public static final String MODID = "ends_delight";
     public static final String NAME = "End's Delight Legacy";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.0.1";
     public static final CreativeTabs CREATIVE_TAB = EDCreativeTab.TAB;
 
     private static Logger logger;
@@ -57,6 +58,7 @@ public class EndsDelightLegacy
         proxy.init(event);
         GameRegistry.registerWorldGenerator(new EDWorldGenerator(), 0);
         EDRecipeRegistry.registerAll();
+        EDHuntingDropRegistry.register();
         logger.info("{} initialized.", NAME);
     }
 

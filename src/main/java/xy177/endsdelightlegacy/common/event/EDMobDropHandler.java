@@ -1,6 +1,5 @@
 package xy177.endsdelightlegacy.common.event;
 
-import com.wdcftgg.farmersdelightlegacy.common.item.ItemKnife;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
@@ -16,7 +15,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xy177.endsdelightlegacy.EndsDelightLegacy;
-import xy177.endsdelightlegacy.common.config.EDConfig;
 import xy177.endsdelightlegacy.common.registry.EDItems;
 
 @Mod.EventBusSubscriber(modid = EndsDelightLegacy.MODID)
@@ -37,30 +35,6 @@ public final class EDMobDropHandler
 
         if (entity instanceof EntityDragon) {
             addDragonDrops(event);
-            return;
-        }
-
-        EntityLivingBase attacker = getLivingAttacker(event.getSource());
-        if (attacker == null || !ItemKnife.isKnife(attacker.getHeldItemMainhand())) {
-            return;
-        }
-
-        if (entity instanceof EntityShulker) {
-            if (entity.getRNG().nextFloat() < EDConfig.shulkerMeatDropChance) {
-                addDrop(event, EDItems.SHULKER_MEAT, 1);
-            }
-            return;
-        }
-
-        if (entity instanceof EntityEnderman) {
-            if (entity.getRNG().nextFloat() < EDConfig.endermanGristleDropChance) {
-                addDrop(event, EDItems.ENDERMAN_GRISTLE, 1);
-            }
-            return;
-        }
-
-        if (entity instanceof EntityEndermite) {
-            addDrop(event, entity.isBurning() ? EDItems.DRIED_ENDERMITE_MEAT : EDItems.RAW_ENDER_MITE_MEAT, randomMeatCount(entity));
         }
     }
 
@@ -72,7 +46,7 @@ public final class EDMobDropHandler
         }
 
         EntityLivingBase attacker = getLivingAttacker(event.getSource());
-        if (attacker != null && attacker.getHeldItemMainhand().getItem() == EDItems.DRAGON_TOOTH_KNIFE) {
+        if (attacker != null && isDragonToothWeapon(attacker.getHeldItemMainhand())) {
             event.setAmount(event.getAmount() * 3.5F);
         }
     }
@@ -83,17 +57,6 @@ public final class EDMobDropHandler
         addDrop(event, EDItems.DRAGON_LEG, 2);
         addDrop(event, EDItems.RAW_DRAGON_MEAT, 5 + bonusCount(dragon));
         addDrop(event, EDItems.DRAGON_TOOTH, 3 + bonusCount(dragon));
-
-        EntityLivingBase attacker = getLivingAttacker(event.getSource());
-        if (attacker != null && ItemKnife.isKnife(attacker.getHeldItemMainhand())) {
-            addDrop(event, EDItems.RAW_DRAGON_MEAT, 2);
-            addDrop(event, EDItems.DRAGON_TOOTH, 1);
-        }
-    }
-
-    private static int randomMeatCount(EntityLivingBase entity)
-    {
-        return 2 + bonusCount(entity);
     }
 
     private static int bonusCount(EntityLivingBase entity)
@@ -122,6 +85,12 @@ public final class EDMobDropHandler
             || entity instanceof EntityEndermite
             || entity instanceof EntityShulker
             || entity instanceof EntityDragon;
+    }
+
+    private static boolean isDragonToothWeapon(ItemStack stack)
+    {
+        Item item = stack.getItem();
+        return item == EDItems.DRAGON_TOOTH_KNIFE || item == EDItems.DRAGON_TOOTH_MACHETE;
     }
 
     private static void addDrop(LivingDropsEvent event, Item item, int count)

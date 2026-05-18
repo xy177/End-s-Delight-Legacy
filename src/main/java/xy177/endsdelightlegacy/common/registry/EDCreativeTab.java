@@ -30,6 +30,10 @@ public final class EDCreativeTab
             add(items, "purpur_knife");
             add(items, "dragon_egg_shell_knife");
             add(items, "dragon_tooth_knife");
+            add(items, "end_stone_machete");
+            add(items, "purpur_machete");
+            add(items, "dragon_egg_shell_machete");
+            add(items, "dragon_tooth_machete");
             add(items, "ender_pearl_grain");
             add(items, "chorus_fruit_grain");
             add(items, "chorus_succulent");

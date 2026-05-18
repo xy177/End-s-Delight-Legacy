@@ -10,9 +10,11 @@ import java.lang.reflect.Method;
 import java.util.List;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
@@ -51,6 +53,7 @@ public final class EDRecipeRegistry
         if (!Loader.isModLoaded("futuremc")) {
             registerDragonToothKnifeCrafting(registry);
         }
+        registerMacheteCraftingRecipes(registry);
     }
 
     private static void registerFurnaceRecipes()
@@ -472,11 +475,15 @@ public final class EDRecipeRegistry
 
     private static void registerFutureMcSmithingRecipes()
     {
-        tryRegisterFutureMcSmithing();
+        tryRegisterFutureMcSmithing(EDItems.DRAGON_EGG_SHELL_KNIFE, EDItems.DRAGON_TOOTH_KNIFE);
+        tryRegisterFutureMcSmithing(EDItems.DRAGON_EGG_SHELL_MACHETE, EDItems.DRAGON_TOOTH_MACHETE);
     }
 
-    private static boolean tryRegisterFutureMcSmithing()
+    private static boolean tryRegisterFutureMcSmithing(Item base, Item output)
     {
+        if (base == null || output == null) {
+            return false;
+        }
         if (!Loader.isModLoaded("futuremc")) {
             return false;
         }
@@ -491,9 +498,9 @@ public final class EDRecipeRegistry
             List<Object> recipes = (List<Object>) getRecipes.invoke(instance);
             Constructor<?> ctor = recipeClass.getConstructor(Ingredient.class, Ingredient.class, ItemStack.class);
             Object recipe = ctor.newInstance(
-                Ingredient.fromStacks(new ItemStack(EDItems.DRAGON_EGG_SHELL_KNIFE, 1, OreDictionary.WILDCARD_VALUE)),
+                Ingredient.fromStacks(new ItemStack(base, 1, OreDictionary.WILDCARD_VALUE)),
                 Ingredient.fromItem(EDItems.DRAGON_TOOTH),
-                new ItemStack(EDItems.DRAGON_TOOTH_KNIFE)
+                new ItemStack(output)
             );
             recipes.add(recipe);
             return true;
@@ -514,6 +521,62 @@ public final class EDRecipeRegistry
         ingredients.add(Ingredient.fromItem(EDItems.DRAGON_TOOTH));
         ShapelessRecipes recipe = new ShapelessRecipes(EndsDelightLegacy.MODID, new ItemStack(EDItems.DRAGON_TOOTH_KNIFE), ingredients);
         recipe.setRegistryName(id);
+        registry.register(recipe);
+    }
+
+    private static void registerMacheteCraftingRecipes(IForgeRegistry<IRecipe> registry)
+    {
+        Ingredient poppedChorus = Ingredient.fromItem(Items.CHORUS_FRUIT_POPPED);
+        registerMacheteRecipe(registry, "end_stone_machete", EDItems.END_STONE_MACHETE, Ingredient.fromStacks(new ItemStack(Blocks.END_STONE)), poppedChorus);
+        registerMacheteRecipe(registry, "purpur_machete", EDItems.PURPUR_MACHETE, Ingredient.fromStacks(new ItemStack(Items.CHORUS_FRUIT_POPPED), new ItemStack(Blocks.PURPUR_BLOCK)), poppedChorus);
+        registerMacheteRecipe(registry, "dragon_egg_shell_machete", EDItems.DRAGON_EGG_SHELL_MACHETE, Ingredient.fromItem(EDItems.HALF_DRAGON_EGG_SHELL), poppedChorus);
+        if (!Loader.isModLoaded("futuremc")) {
+            registerDragonToothMacheteCrafting(registry);
+        }
+    }
+
+    private static void registerDragonToothMacheteCrafting(IForgeRegistry<IRecipe> registry)
+    {
+        if (EDItems.DRAGON_EGG_SHELL_MACHETE == null || EDItems.DRAGON_TOOTH_MACHETE == null) {
+            return;
+        }
+
+        ResourceLocation id = new ResourceLocation(EndsDelightLegacy.MODID, "dragon_tooth_machete");
+        if (registry.containsKey(id)) {
+            return;
+        }
+
+        NonNullList<Ingredient> ingredients = NonNullList.create();
+        ingredients.add(Ingredient.fromStacks(new ItemStack(EDItems.DRAGON_EGG_SHELL_MACHETE, 1, OreDictionary.WILDCARD_VALUE)));
+        ingredients.add(Ingredient.fromItem(EDItems.DRAGON_TOOTH));
+        ShapelessRecipes recipe = new ShapelessRecipes(EndsDelightLegacy.MODID, new ItemStack(EDItems.DRAGON_TOOTH_MACHETE), ingredients);
+        recipe.setRegistryName(id);
+        registry.register(recipe);
+    }
+
+    private static void registerMacheteRecipe(IForgeRegistry<IRecipe> registry, String name, Item output, Ingredient material, Ingredient handle)
+    {
+        if (output == null || material == Ingredient.EMPTY || handle == Ingredient.EMPTY) {
+            return;
+        }
+
+        ResourceLocation recipeId = new ResourceLocation(EndsDelightLegacy.MODID, name);
+        if (registry.containsKey(recipeId)) {
+            return;
+        }
+
+        NonNullList<Ingredient> ingredients = NonNullList.withSize(9, Ingredient.EMPTY);
+        ingredients.set(2, material);
+        ingredients.set(4, material);
+        ingredients.set(6, handle);
+        ShapedRecipes recipe = new ShapedRecipes(
+            EndsDelightLegacy.MODID,
+            3,
+            3,
+            ingredients,
+            new ItemStack(output)
+        );
+        recipe.setRegistryName(recipeId);
         registry.register(recipe);
     }
 

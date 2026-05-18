@@ -37,6 +37,10 @@ public class ClientRegistryHandler
         registerItemModel(EDItems.HALF_DRAGON_EGG_SHELL);
         registerItemModel(EDItems.DRAGON_EGG_SHELL_KNIFE);
         registerItemModel(EDItems.DRAGON_TOOTH_KNIFE);
+        registerItemModel(EDItems.END_STONE_MACHETE);
+        registerItemModel(EDItems.PURPUR_MACHETE);
+        registerItemModel(EDItems.DRAGON_EGG_SHELL_MACHETE);
+        registerItemModel(EDItems.DRAGON_TOOTH_MACHETE);
         registerItemModel(EDItems.LIQUID_DRAGON_EGG);
         registerItemModel(EDItems.FRIED_DRAGON_EGG);
         registerItemModel(EDItems.END_MIXED_SALAD);
