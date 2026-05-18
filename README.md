@@ -1,6 +1,6 @@
 # End's Delight Legacy / 末地农家乐
 
-![End's Delight Legacy Logo](logo.png)
+![End's Delight Legacy Logo](art/logo_hi.png)
 
 ## Overview
 
@@ -41,23 +41,8 @@ The mod adds End-flavored ingredients, meals, drinks, knives, mob drops, placeab
 - Source-style advancements for the main End's Delight progression chain.
 - Compatibility fallbacks for ingredients that do not exist in vanilla Minecraft `1.12.2`.
 
-## Building
-
-Use the included Gradle wrapper:
-
-```bat
-.\gradlew.bat build --no-daemon
-```
-
-The exported jar is generated under:
-
-```text
-build/libs/
-```
-
 ## Credits
 
-- Port author: `xy177`
 - Original modern-version mod: **End's Delight** by `FoggyHillside`
 - Required base mod: **Farmer's Delight Legacy**
 
